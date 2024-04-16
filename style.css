@@ -21,7 +21,7 @@ body {
 
 .header {
   height: 20vh;
-  background-color: #0ebb70;
+  background-color: #8dc89b;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,11 +69,17 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #8dc89b;
+  border-radius: 15px;
 }
 
 .book-card {
   background-color: #8dc89b;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .white-text {

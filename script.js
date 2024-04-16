@@ -17,4 +17,18 @@ addBookToLibrary("The Three Body Problem", "Liu Cixin", 400, false);
 
 addBookToLibrary("The Martian", "Andy Weir", 480, true);
 
-console.log(myLibrary);
+for (i = 0; i < myLibrary.length; i++) {
+  const bookGrid = document.querySelector(".book-grid");
+  const bookCard = document.createElement("div");
+
+  bookCard.classList.add("book-card");
+  bookCard.innerHTML = `
+  <h2 class="white-text title">${myLibrary[i].title}</h2>
+  <p class="white-text author">${myLibrary[i].author}</p>
+  <p class="white-text">${myLibrary[i].pages}</p>
+  <p class="white-text">${myLibrary[i].read ? "Read" : "Unread"}</p>
+  `;
+  bookGrid.appendChild(bookCard);
+
+  console.log("hi");
+}
