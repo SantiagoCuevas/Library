@@ -25,10 +25,20 @@ for (i = 0; i < myLibrary.length; i++) {
   bookCard.innerHTML = `
   <h2 class="white-text title">${myLibrary[i].title}</h2>
   <p class="white-text author">${myLibrary[i].author}</p>
-  <p class="white-text">${myLibrary[i].pages}</p>
+  <p class="white-text">Pages: ${myLibrary[i].pages}</p>
   <p class="white-text">${myLibrary[i].read ? "Read" : "Unread"}</p>
   `;
   bookGrid.appendChild(bookCard);
-
-  console.log("hi");
 }
+
+const modal = document.querySelector("dialog");
+const addBookButton = document.querySelector(".add-book");
+const closeModalBtn = document.querySelector(".close-btn");
+
+addBookButton.addEventListener("click", () => {
+  modal.showModal();
+});
+
+closeModalBtn.addEventListener("click", () => {
+  modal.close();
+});

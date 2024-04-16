@@ -21,8 +21,39 @@
       <div class="content">
         <div class="book-grid">
           <div class="add-book-card">
-            <h2 class="white-text">Add Book</h2>
-            <img src="logo/plus.svg" class="logo filter-white" />
+            <h2 class="white-text title">Add Book</h2>
+            <dialog>
+              <div class="modal-container">
+                <img onclick="" src="logo/close-thick.svg" class="close-btn" />
+                <form>
+                  <label for="title">Title:</label><br />
+                  <input type="text" id="title" name="title" /><br />
+                  <label for="author">Author:</label><br />
+                  <input type="text" id="author" name="author" /><br />
+                  <label for="pages">Pages:</label><br />
+                  <input type="text" id="pages" name="pages" /><br />
+
+                  <div class="read-stat-container">
+                    <p class="read-question-text">Read or Unread?</p>
+                    <input
+                      type="radio"
+                      id="read"
+                      name="read_status"
+                      value="Read"
+                    />
+                    <label for="read">Read</label><br />
+                    <input
+                      type="radio"
+                      id="unread"
+                      name="read_status"
+                      value="Unread"
+                    />
+                    <label for="unread">Unread</label>
+                  </div>
+                </form>
+              </div>
+            </dialog>
+            <img src="logo/plus.svg" class="logo filter-white add-book" />
           </div>
         </div>
       </div>
