@@ -11,26 +11,6 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(new Book(title, author, pages, read));
 }
 
-addBookToLibrary("The Hobbit", "J. R. R. Tolkien", 304, true);
-addBookToLibrary("The Three Body Problem", "Liu Cixin", 400, false);
-addBookToLibrary("The Martian", "Andy Weir", 480, true);
-
-// Render Books already in library
-for (i = 0; i < myLibrary.length; i++) {
-  const bookGrid = document.querySelector(".book-grid");
-  const bookCard = document.createElement("div");
-
-  bookCard.classList.add("book-card");
-  bookCard.innerHTML = `
-  <h2 class="white-text title">${myLibrary[i].title}</h2>
-  <p class="white-text author">${myLibrary[i].author}</p>
-  <p class="white-text">Pages: ${myLibrary[i].pages}</p>
-  <p class="white-text read">${myLibrary[i].read ? "Read" : "Unread"}</p>
-  <img src="logo/trash-can-outline.svg" class="trash-logo filter-white" />
-  `;
-  bookGrid.appendChild(bookCard);
-}
-
 // Add book modal window
 const modal = document.querySelector("dialog");
 const addBookButton = document.querySelector(".add-book");
@@ -52,7 +32,9 @@ addBookForm.addEventListener("submit", function (e) {
   const titleInput = document.getElementById("title").value;
   const authorInput = document.getElementById("author").value;
   const pagesInput = document.getElementById("pages").value;
-  const readInput = document.getElementById("read");
+  let readInput = document.getElementById("read");
+
+  readInput = readInput.checked ? true : false;
 
   // Create book
   addBookToLibrary(titleInput, authorInput, pagesInput, readInput);
@@ -60,12 +42,11 @@ addBookForm.addEventListener("submit", function (e) {
   // Render book
   addBookCard(myLibrary[myLibrary.length - 1]);
 
-  console.log(myLibrary);
   modal.close();
   addBookForm.reset();
 });
 
-// Render single book function
+// Render book function
 function addBookCard(book) {
   const bookGrid = document.querySelector(".book-grid");
   const bookCard = document.createElement("div");
