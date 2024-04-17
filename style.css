@@ -98,6 +98,15 @@ body {
   font-size: 18px;
 }
 
+.read {
+  cursor: pointer;
+}
+
+.trash-logo {
+  height: 40px;
+  cursor: pointer;
+}
+
 dialog {
   height: 50vh;
   width: 50vw;
