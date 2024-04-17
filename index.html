@@ -25,13 +25,15 @@
             <dialog>
               <div class="modal-container">
                 <img onclick="" src="logo/close-thick.svg" class="close-btn" />
-                <form>
+                <form name="addBook" action="script.js">
                   <label for="title">Title:</label><br />
                   <input type="text" id="title" name="title" /><br />
+
                   <label for="author">Author:</label><br />
                   <input type="text" id="author" name="author" /><br />
+
                   <label for="pages">Pages:</label><br />
-                  <input type="text" id="pages" name="pages" /><br />
+                  <input type="number" id="pages" name="pages" /><br />
 
                   <div class="read-stat-container">
                     <p class="read-question-text">Read or Unread?</p>
@@ -50,6 +52,7 @@
                     />
                     <label for="unread">Unread</label>
                   </div>
+                  <input type="submit" value="Add Book" />
                 </form>
               </div>
             </dialog>
