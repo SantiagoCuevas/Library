@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
+  background-color: #d7f4e2;
 }
 
 .filter-white {
@@ -52,8 +53,8 @@ body {
 }
 
 .content {
-  background-color: #d7f4e2;
   height: 80vh;
+  max-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
 }
