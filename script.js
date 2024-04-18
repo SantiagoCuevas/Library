@@ -1,10 +1,12 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title = "", author = "", pages = 0, read = false) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -22,6 +24,7 @@ addBookButton.addEventListener("click", () => {
 
 closeModalBtn.addEventListener("click", () => {
   modal.close();
+  addBookForm.reset();
 });
 
 // Handle form submit
@@ -32,31 +35,53 @@ addBookForm.addEventListener("submit", function (e) {
   const titleInput = document.getElementById("title").value;
   const authorInput = document.getElementById("author").value;
   const pagesInput = document.getElementById("pages").value;
-  let readInput = document.getElementById("read");
-
-  readInput = readInput.checked ? true : false;
+  const isRead = document.getElementById("read").checked;
 
   // Create book
-  addBookToLibrary(titleInput, authorInput, pagesInput, readInput);
+  addBookToLibrary(titleInput, authorInput, pagesInput, isRead);
 
   // Render book
-  addBookCard(myLibrary[myLibrary.length - 1]);
+  renderLibrary(myLibrary);
 
   modal.close();
   addBookForm.reset();
 });
 
-// Render book function
-function addBookCard(book) {
-  const bookGrid = document.querySelector(".book-grid");
+const makeBookHTML = (book, bookIndex) => {
   const bookCard = document.createElement("div");
 
   bookCard.classList.add("book-card");
+
   bookCard.innerHTML = `
   <h2 class="white-text title">${book.title}</h2>
   <p class="white-text author">${book.author}</p>
   <p class="white-text">Pages: ${book.pages}</p>
-  <p class="white-text">${book.read ? "Read" : "Unread"}</p>
+  <p class="white-text read">${book.read ? "Read" : "Unread"}</p>
   `;
-  bookGrid.appendChild(bookCard);
-}
+
+  const trashBtn = document.createElement("img");
+  trashBtn.setAttribute("src", "logo/trash-can-outline.svg");
+  trashBtn.setAttribute("class", "filter-white trash-logo");
+  trashBtn.onclick = () => deleteBook(bookIndex);
+  bookCard.appendChild(trashBtn);
+
+  return bookCard;
+};
+
+const deleteBook = (index) => {
+  myLibrary.splice(index, 1);
+  renderLibrary(myLibrary);
+};
+
+const renderLibrary = (library) => {
+  const bookGrid = document.querySelector(".book-grid");
+  const bookCards = document.querySelectorAll(".book-card");
+
+  bookCards.forEach((el) => {
+    el.remove();
+  });
+
+  library.forEach((book, index) => {
+    bookGrid.appendChild(makeBookHTML(book, index));
+  });
+};
