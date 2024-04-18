@@ -109,8 +109,8 @@ body {
 }
 
 dialog {
-  height: 50vh;
-  width: 50vw;
+  height: 35vh;
+  width: 20vw;
   background-color: #d7f4e2;
   border: 3px solid #8dc89b;
   border-radius: 15px;
@@ -125,6 +125,8 @@ dialog {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .close-btn {
