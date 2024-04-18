@@ -7,6 +7,11 @@ class Book {
     this.pages = pages;
     this.read = read;
   }
+
+  toggleIsRead() {
+    this.read = !this.read;
+    renderLibrary(myLibrary);
+  }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -49,6 +54,7 @@ addBookForm.addEventListener("submit", function (e) {
 
 const makeBookHTML = (book, bookIndex) => {
   const bookCard = document.createElement("div");
+  const bookObj = myLibrary[bookIndex];
 
   bookCard.classList.add("book-card");
 
@@ -56,8 +62,13 @@ const makeBookHTML = (book, bookIndex) => {
   <h2 class="white-text title">${book.title}</h2>
   <p class="white-text author">${book.author}</p>
   <p class="white-text">Pages: ${book.pages}</p>
-  <p class="white-text read">${book.read ? "Read" : "Unread"}</p>
   `;
+
+  const isRead = document.createElement("p");
+  isRead.setAttribute("class", "white-text read");
+  isRead.onclick = () => bookObj.toggleIsRead();
+  isRead.innerText = `${book.read ? "Read" : "Unread"}`;
+  bookCard.appendChild(isRead);
 
   const trashBtn = document.createElement("img");
   trashBtn.setAttribute("src", "logo/trash-can-outline.svg");
